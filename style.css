@@ -124,3 +124,21 @@ nav {
 html {
     scroll-behavior: smooth;
 }
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-logo img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    filter: grayscale(100%);
+}
+
+.nav-logo span {
+    font-size: 1.1em;
+    letter-spacing: 2px;
+}
