@@ -7,8 +7,8 @@
 }
 
 body {
-    background-color: #050505;
-    color: #00ff9c;
+    background-color: #000000;
+    color: #ffffff;
     font-family: 'Share Tech Mono', monospace;
     line-height: 1.6;
 }
@@ -16,7 +16,7 @@ body {
 header {
     text-align: center;
     padding: 80px 20px;
-    border-bottom: 1px solid #00ff9c;
+    border-bottom: 1px solid #ffffff33;
 }
 
 h1 {
@@ -27,7 +27,7 @@ h1 {
 .subtitle {
     margin-top: 10px;
     font-size: 1.2em;
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 .buttons {
@@ -38,15 +38,15 @@ h1 {
     display: inline-block;
     margin: 10px;
     padding: 12px 25px;
-    border: 1px solid #00ff9c;
-    color: #00ff9c;
+    border: 1px solid #ffffff;
+    color: #ffffff;
     text-decoration: none;
     transition: 0.3s;
 }
 
 .btn:hover {
-    background-color: #00ff9c;
-    color: #050505;
+    background-color: #ffffff;
+    color: #000000;
 }
 
 .secondary {
@@ -58,12 +58,13 @@ section {
     padding: 60px 20px;
     max-width: 900px;
     margin: auto;
-    border-bottom: 1px solid #00ff9c22;
+    border-bottom: 1px solid #ffffff22;
 }
 
 h2 {
     margin-bottom: 20px;
     font-size: 1.8em;
+    letter-spacing: 1px;
 }
 
 ul {
@@ -75,5 +76,51 @@ footer {
     text-align: center;
     padding: 30px;
     font-size: 0.9em;
-    opacity: 0.6;
+    opacity: 0.5;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #000000;
+    border-bottom: 1px solid #ffffff22;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-size: 1.2em;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95em;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+html {
+    scroll-behavior: smooth;
 }
