@@ -1,1 +1,4 @@
-console.log("Accès autorisé - Fondation SCP");
+function toggleMenu() {
+    const menu = document.getElementById("navLinks");
+    menu.classList.toggle("active");
+}
