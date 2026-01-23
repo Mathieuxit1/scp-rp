@@ -264,3 +264,83 @@ section p {
     margin-top: 10px;
     opacity: 0.85;
 }
+/* ===== CARTES SCP ===== */
+
+.scp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    padding: 50px 20px;
+}
+
+.scp-card {
+    background-color: #050505;
+    border: 1px solid #ffffff22;
+    padding: 20px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.scp-card:hover {
+    transform: translateY(-4px);
+    border-color: #ffffff55;
+}
+
+.scp-card h3 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.scp-card p {
+    font-size: 0.9em;
+    opacity: 0.85;
+}
+
+.scp-class {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.7em;
+    padding: 4px 8px;
+    border: 1px solid #ffffff55;
+}
+
+/* Classes SCP */
+.euclide {
+    border-left: 4px solid #ffffff;
+}
+
+.keter {
+    border-left: 4px solid #ff4444;
+}
+
+.secur {
+    border-left: 4px solid #44ff88;
+}
+
+.scp-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===== PAGE SCP DETAIL ===== */
+
+.scp-detail {
+    max-width: 900px;
+    margin: auto;
+    padding: 50px 20px;
+}
+
+.scp-image {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: 0 auto 30px;
+    border: 1px solid #ffffff33;
+}
+
+.scp-detail h2 {
+    margin-top: 40px;
+    font-size: 1.5em;
+}
