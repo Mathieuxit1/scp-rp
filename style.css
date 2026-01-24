@@ -344,3 +344,25 @@ section p {
     margin-top: 40px;
     font-size: 1.5em;
 }
+
+/* ===== FILTRES SCP ===== */
+
+.scp-filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+.scp-filters button {
+    background: #111;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-family: monospace;
+}
+
+.scp-filters button:hover {
+    background: #222;
+}

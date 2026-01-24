@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin — Mise à jour du site SCP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: monospace;
+            background: #000;
+            color: #fff;
+            padding: 20px;
+        }
+
+        input, textarea, select, button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: #111;
+            color: #fff;
+            border: 1px solid #444;
+        }
+
+        button {
+            cursor: pointer;
+            background: #222;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .history {
+            margin-top: 30px;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+        }
+
+        .history-entry {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🔒 Admin — Mises à jour SCP</h1>
+
+<!-- 🔐 MOT DE PASSE -->
+<div id="login">
+    <input type="password" id="password" placeholder="Mot de passe admin">
+    <button onclick="checkPassword()">Accéder</button>
+</div>
+
+<!-- PANEL ADMIN -->
+<div id="panel" class="hidden">
+
+    <label>Version</label>
+    <input id="version" placeholder="Ex : v1.3.0">
+
+    <label>Type de mise à jour</label>
+    <select id="type">
+        <option value="add">➕ Ajout</option>
+        <option value="edit">✏️ Modification</option>
+        <option value="fix">🛠️ Correction</option>
+    </select>
+
+    <label>Détails</label>
+    <textarea id="content" rows="6"
+    placeholder="Ex :&#10;Ajout de SCP-409&#10;Correction procédure SCP-096"></textarea>
+
+    <button onclick="sendUpdate()">Envoyer la mise à jour</button>
+
+    <div class="history">
+        <h3>📜 Historique local</h3>
+        <div id="history"></div>
+    </div>
+
+</div>
+
+<script>
+/* ======================
+   CONFIG
+====================== */
+const ADMIN_PASSWORD = "MATHIEUX5450";
+const WEBHOOK_URL = "https://discord.com/api/webhooks/1464659523821371505/jcTCFtx7XdldCpoFvpmcUwfwl_LV1kUHIk42Io-7jl_ZRKF3ZYV-ucG-RFayJDuSL2lE";
+const SITE_URL = "https://scp-rp.vercel.app/";
+
+/* ======================
+   LOGIN
+====================== */
+function checkPassword() {
+    const input = document.getElementById("password").value;
+
+    if (input === ADMIN_PASSWORD) {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("panel").classList.remove("hidden");
+        loadHistory();
+    } else {
+        alert("Mot de passe incorrect");
+    }
+}
+
+/* ======================
+   ENVOI DISCORD
+====================== */
+function sendUpdate() {
+    const version = document.getElementById("version").value;
+    const type = document.getElementById("type").value;
+    const content = document.getElementById("content").value;
+
+    if (!version || !content) {
+        alert("Version et contenu requis");
+        return;
+    }
+
+    let color;
+    let title;
+
+    if (type === "add") {
+        color = 3066993; // vert
+        title = "➕ Nouvelle mise à jour";
+    } else if (type === "edit") {
+        color = 15105570; // jaune
+        title = "✏️ Mise à jour modifiée";
+    } else {
+        color = 10038562; // bleu
+        title = "🛠️ Correction";
+    }
+
+    const embed = {
+        title: title,
+        description: content,
+        color: color,
+        fields: [
+            { name: "Version", value: version, inline: true },
+            { name: "Site", value: `[Accéder au site](${SITE_URL})`, inline: true }
+        ],
+        footer: {
+            text: "Fondation SCP — Archives du site"
+        },
+        timestamp: new Date().toISOString()
+    };
+
+    fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ embeds: [embed] })
+    });
+
+    saveHistory(version, content);
+    alert("Mise à jour envoyée !");
+}
+
+/* ======================
+   HISTORIQUE LOCAL
+====================== */
+function saveHistory(version, content) {
+    const history = JSON.parse(localStorage.getItem("updates")) || [];
+    history.unshift({
+        version,
+        content,
+        date: new Date().toLocaleString()
+    });
+    localStorage.setItem("updates", JSON.stringify(history));
+    loadHistory();
+}
+
+function loadHistory() {
+    const history = JSON.parse(localStorage.getItem("updates")) || [];
+    const container = document.getElementById("history");
+    container.innerHTML = "";
+
+    history.forEach(entry => {
+        const div = document.createElement("div");
+        div.className = "history-entry";
+        div.innerText = `[${entry.date}] ${entry.version} — ${entry.content}`;
+        container.appendChild(div);
+    });
+}
+</script>
+
+</body>
+</html>
