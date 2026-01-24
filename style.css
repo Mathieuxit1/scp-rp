@@ -366,3 +366,71 @@ section p {
 .scp-filters button:hover {
     background: #222;
 }
+
+/* =========================
+   PAGE ÉQUIPES
+========================= */
+
+.teams {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    padding: 50px 20px;
+}
+
+.team-card {
+    background: #050505;
+    border: 1px solid #ffffff22;
+    padding: 25px;
+    transition: 0.3s;
+}
+
+.team-card:hover {
+    border-color: #ffffff55;
+    transform: translateY(-3px);
+}
+
+.team-card h3 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.team-card p {
+    font-size: 0.9em;
+    opacity: 0.8;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* Bouton Discord */
+.team-card .btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border: 1px solid #ffffff55;
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.85em;
+    transition: 0.3s;
+}
+
+.team-card .btn:hover {
+    background: #ffffff;
+    color: #000;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .teams {
+        padding: 30px 15px;
+        gap: 15px;
+    }
+
+    .team-card {
+        padding: 20px;
+    }
+
+    .team-card h3 {
+        font-size: 1.2em;
+    }
+}
