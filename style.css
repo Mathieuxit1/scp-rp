@@ -434,3 +434,28 @@ section p {
         font-size: 1.2em;
     }
 }
+
+#evenements {
+    text-align: center;
+    margin: 60px 0;
+}
+
+.no-event {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+.coming-soon {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.coming-soon img {
+    max-width: 280px;
+    width: 100%;
+    opacity: 0.75;
+    filter: grayscale(100%);
+}
