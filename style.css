@@ -459,3 +459,88 @@ section p {
     opacity: 0.75;
     filter: grayscale(100%);
 }
+
+/* ===============================
+   RESPONSIVE MOBILE
+================================ */
+@media (max-width: 768px) {
+
+    body {
+        font-size: 15px;
+    }
+
+    header {
+        padding: 30px 15px;
+        text-align: center;
+    }
+
+    h1, h2 {
+        font-size: 1.4rem;
+        line-height: 1.3;
+    }
+
+    /* Navigation */
+    nav {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        z-index: 100;
+        background: #000;
+    }
+
+    .nav-container {
+        justify-content: space-around;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 0;
+    }
+
+    .nav-links li a {
+        padding: 12px 8px;
+        font-size: 0.85rem;
+    }
+
+    /* SCP cards */
+    .scp-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 20px 10px 80px;
+    }
+
+    .scp-card {
+        padding: 18px;
+    }
+
+    .scp-card h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Images SCP */
+    .scp-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+    }
+
+    /* Événements */
+    #evenements {
+        padding: 40px 15px;
+    }
+
+    .coming-soon img {
+        max-width: 220px;
+    }
+
+    /* Boutons */
+    a.button, button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    footer {
+        padding-bottom: 70px; /* place pour la nav en bas */
+    }
+}
